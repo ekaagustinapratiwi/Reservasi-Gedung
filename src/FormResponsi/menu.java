@@ -35,7 +35,6 @@ public class menu extends javax.swing.JFrame {
         alamat.setEnabled(true);
         tglp.setEnabled(true);
         tglk.setEnabled(true);
-        jumhar.setEnabled(true);
         biaya.setEnabled(true);
         nama.requestFocus();
     }
@@ -46,12 +45,11 @@ public class menu extends javax.swing.JFrame {
         alamat.setText("");
         tglp.setText("");
         tglk.setText("");
-        jumhar.setText("");
         biaya.setText("");
     }
 
     protected void datatable() {
-        Object[] Baris = {"nama", "alamat", "telp", "tglp", "tglk", "jumhar", "biaya"};
+       Object[] Baris = {"nama", "alamat", "telp", "tglp", "tglk", "biaya"};
         tabmode = new DefaultTableModel(null, Baris);
         tbr.setModel(tabmode);
         String sql = "select * from reservasi";
@@ -64,10 +62,9 @@ public class menu extends javax.swing.JFrame {
                 String alamat = hasil.getString("alamat");
                 String tgl_pinjam = hasil.getString("tgl_pinjam");
                 String tgl_kembali = hasil.getString("tgl_kembali");
-                String jumlah_hari = hasil.getString("jumlah_hari");
                 String biaya = hasil.getString("biaya");
 
-                String[] data = {nama, telp, alamat, tgl_pinjam, tgl_kembali, jumlah_hari, biaya};
+                String[] data = {nama, telp, alamat, tgl_pinjam, tgl_kembali, biaya};
                 tabmode.addRow(data);
             }
         } catch (Exception e) {
@@ -118,13 +115,11 @@ public class menu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         nama = new javax.swing.JTextField();
         telp = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         alamat = new javax.swing.JTextArea();
-        jumhar = new javax.swing.JTextField();
         biaya = new javax.swing.JTextField();
         simpan = new javax.swing.JButton();
         kensel = new javax.swing.JButton();
@@ -170,8 +165,6 @@ public class menu extends javax.swing.JFrame {
         jLabel5.setText("Tgl Pinjam");
 
         jLabel6.setText("Tgl Kembali");
-
-        jLabel7.setText("Jumlah Hari");
 
         jLabel8.setText("Biaya");
 
@@ -242,7 +235,6 @@ public class menu extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)))
                     .addGroup(layout.createSequentialGroup()
@@ -250,18 +242,22 @@ public class menu extends javax.swing.JFrame {
                         .addComponent(simpan)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listGedung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(biaya, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jumhar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(telp, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                .addComponent(tglp, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nama)
-                                .addComponent(tglk)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(listGedung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(telp, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                        .addComponent(tglp, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nama)
+                                        .addComponent(tglk)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(biaya, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84))
                     .addGroup(layout.createSequentialGroup()
@@ -307,21 +303,18 @@ public class menu extends javax.swing.JFrame {
                                     .addComponent(tglp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(listGedung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(66, 66, 66))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(tglk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jumhar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
-                            .addComponent(listGedung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
+                                .addGap(164, 164, 164)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(kensel)
                             .addComponent(simpan)
@@ -340,7 +333,7 @@ public class menu extends javax.swing.JFrame {
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         // TODO add your handling code here:
-        String sql = "insert into reservasi(nama,alamat,telp,tgl_pinjam,tgl_kembali,jumlah_hari,biaya) values (?,?,?,?,?,?,?)";
+        String sql = "insert into reservasi(nama,alamat,telp,tgl_pinjam,tgl_kembali,biaya) values (?,?,?,?,?,?)";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nama.getText());
@@ -348,13 +341,13 @@ public class menu extends javax.swing.JFrame {
             stat.setString(3, telp.getText());
             stat.setString(4, tglp.getText());
             stat.setString(5, tglk.getText());
-            stat.setString(6, jumhar.getText());
-            stat.setString(7, biaya.getText());
+            stat.setString(6, biaya.getText());
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "DATA BERHASIL DISIMPAN");
             kosong();
             nama.requestFocus();
+            datatable();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "DATA GAGAL DISIMPAN" + e);
         }
@@ -369,15 +362,13 @@ public class menu extends javax.swing.JFrame {
         String alamat1 = tabmode.getValueAt(bar, 2).toString();
         String tglp1 = tabmode.getValueAt(bar, 3).toString();
         String tglk1 = tabmode.getValueAt(bar, 4).toString();
-        String jumhar1 = tabmode.getValueAt(bar, 5).toString();
-        String biaya1 = tabmode.getValueAt(bar, 6).toString();
+        String biaya1 = tabmode.getValueAt(bar, 5).toString();
 
         nama.setText(nama1);
         telp.setText(telp1);
         alamat.setText(alamat1);
         tglp.setText(tglp1);
         tglk.setText(tglk1);
-        jumhar.setText(jumhar1);
         biaya.setText(biaya1);
 
 
@@ -385,7 +376,7 @@ public class menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String sql = "update reservasi set nama=?,alamat=?,telp=?,tgl_pinjam=?,tgl_kembali=?,jumlah_hari=?,biaya=? where nama='" + nama.getText();
+        String sql = "update reservasi set nama=?,alamat=?,telp=?,tgl_pinjam=?,tgl_kembali=?,biaya=? where nama='" + nama.getText();
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, nama.getText());
@@ -393,8 +384,7 @@ public class menu extends javax.swing.JFrame {
             stat.setString(3, telp.getText());
             stat.setString(4, tglp.getText());
             stat.setString(5, tglk.getText());
-            stat.setString(6, jumhar.getText());
-            stat.setString(7, biaya.getText());
+            stat.setString(6, biaya.getText());
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "DATA BERHASIL DIUBAH");
@@ -411,7 +401,7 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         int ok = JOptionPane.showConfirmDialog(null, "YAKIN MAU HAPUS?", "PESAN KONFIRMASI", JOptionPane.YES_NO_CANCEL_OPTION);
         if (ok == 0) {
-            String sql = "Delete into reservasi(nama,alamat,telp,tgl_pinjam,tgl_kembali,jumlah_hari,biaya) values (?,?,?,?,?,?,?)";
+            String sql = "Delete into reservasi(nama,alamat,telp,tgl_pinjam,tgl_kembali,biaya) values (?,?,?,?,?,?)";
             try {
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
@@ -471,14 +461,12 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jumhar;
     private javax.swing.JButton kensel;
     private javax.swing.JComboBox listGedung;
     private javax.swing.JTextField nama;
